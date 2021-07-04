@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Momentum Clone</title>
+  <link rel="stylesheet" href="todo.css">
+  <script defer src = 'todo.js'></script>
+  <script src="https://kit.fontawesome.com/5fb214d365.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <span class="ask-name">
+    What is your name?
+    <form class = 'name-form'>
+      <input class = 'name-input'>
+    </form>
+  </span>
+
+  <div class="hidden-wrapper">
+    <header>
+      <ul>
+        <li id = 'weather'>Sunny 29'c</li>
+        <li id = 'place'>Incheon</li>
+      </ul>
+    </header>
+  
+    <section class = 'main-contents'>
+      <div id = 'time'>Time</div>
+      <div id = 'good'>Good evening, </div>
+      <br>
+      <div class = 'today focus'>What is your main focus for today?
+      <form class = 'todayForm'><input></input></form>
+      </div>
+    </section>
+  
+    <section class = 'sub-contents'>
+      <button id = 'settings'><i class="fas fa-cogs"></i></button>
+      <span id = 'quotes'>quotes</span>
+      <span id = todo-wrapper>
+        <button id = 'todo-btn'>
+          <span class = 'todoLists lists'>
+            <ul class = 'doLists'>
+            </ul>
+            <form class = 'newTodo '><input placeholder="New Todo"></form>
+          </span>
+          Todo
+      </span>
+      </button>
+    </section>
+  </div>
+</body>
+</html>
