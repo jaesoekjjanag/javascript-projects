@@ -1,0 +1,113 @@
+*{
+  box-sizing: border-box;
+  margin:0;
+  font-size: 16px;
+  color:rgba(255, 248, 220, 0.897)
+}
+
+h1{
+  margin: 2rem;
+  font-size: 2.5rem;
+}
+
+h4{
+  font-size: 1.3rem;
+  margin-bottom:0.5rem;
+}
+#description{
+  font-size: 1.2rem;
+}
+body{
+  background-color: rgba(15, 10, 59, 0.493);
+}
+#wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+#survey-form{
+  margin: 2rem;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 30px 50px;
+  display: flex;
+  flex-direction: column;
+  width: 50rem;
+  height: 50rem;
+  justify-content: space-around;
+}
+
+input{
+  height: 2.5rem;
+  border-radius: 3px;
+  border: none;
+  color: black
+}
+
+select
+,option
+{
+  color:gray
+}
+
+.label{
+  text-align: start;
+  height: 1rem'
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+#grade{
+  height:2.5rem;
+  border-radius: 3px;
+}
+
+#gender-radio{
+  text-align: start;
+  display: flex;
+  flex-direction: column;
+}
+
+
+#gender-radio input{
+  height:1rem;
+  margin-right: 0.2rem;
+  vertical-align: center;
+}
+
+#gender-radio input+label{
+  margin-right:0.5rem;
+}
+
+.gender input{
+  width:1.5rem;
+}
+
+#checkboxes input{
+  height: 1rem;
+  margin-right: 0.2rem;
+  width: 1.5rem;
+}
+
+#checkboxes input+label{
+  margin-right: 0.5rem;
+}
+
+#comments{
+  height: 7rem;
+  margin: 1rem 0;
+}
+
+#submit{
+  background-color:rgba(231, 220, 69, 0.842);
+}
+
+footer{
+  text-align: center;
+  padding-bottom: 0.5rem;
+}
