@@ -1,9 +1,21 @@
+*{
+  color: whitesmoke;
+}
+
 body{
   margin:0;
   padding: 0;
   box-sizing: border-box;
   height: 100vh;
   background-color: papayawhip;
+}
+
+#background{
+  height:100%;
+}
+
+.name-input{
+  color:black; 
 }
 
 ul{
@@ -13,9 +25,12 @@ ul{
   margin: 0;
 }
 
-header{
-  display:block;
-  text-align: right;
+#weather{
+  padding: 12px 20px 0 0 ;
+  display:flex;
+  flex-direction: column;
+  align-items: flex-end;
+  
 }
 
 .main-contents{
@@ -29,17 +44,29 @@ header{
 }
 
 .focus-checkbox {
-  width:1.5rem;
-  height: 1.5rem;
+  width:1.4rem;
+  height: 1.4rem;
   vertical-align:baseline;
-  background: transparent;
+  position:relative;
+  top:1px;
+  margin-right:1rem;
+}
+
+.checkbox-label{
+  cursor:pointer;
+}
+
+.btn-outline-light{
+  height:1px;
+  vertical-align: middle;
 }
 
 .sub-contents{
-  position: relative;
-  display: flex; 
+  position: absolute;
+  display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  bottom: 20px;
+  width:100%;
 }
 
 .inputForm{
@@ -59,19 +86,24 @@ header{
 .today
 ,.focus{
   font-size: 2rem;
-  
 }
 
+.
 p{
   margin:1rem;
+}
+
+.todayFrom{
+  cursor:pointer;
 }
 
 .todayForm input{
   min-width: 100%;
   background-color: transparent;
   border: transparent;
-  border-bottom: 2px solid black;
+  border-bottom: 1.5px solid whitesmoke;
   font-size: 2rem;
+  text-align: center;
 }
 
 .todayForm input:focus{
@@ -88,12 +120,15 @@ p{
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
-  color: #999;
   margin-left: 1rem;
 }
 
-#settings:hover{
-  color: black;
+#settings i{
+  color: rgba(245, 245, 245, 0.75);
+}
+
+#settings i:hover{
+  color: whitesmoke;
 }
 
 #todo-btn{
@@ -101,16 +136,17 @@ p{
   border:none;
   font-size: 1rem;
   font-weight: bold;
-  color: #999;
-  margin-right:1rem;
+  color: rgba(245, 245, 245, 0.75);
+  margin-right:1rem;;
 }
 
 #todo-btn:hover{
-  color: black;
+  color:whitesmoke;
+  cursor: pointer;
 }
 
 #todo-btn:focus{
-  color:black;
+  color: whitesmoke;
 }
 
 .lists{
@@ -119,4 +155,13 @@ p{
 
 .hidden-wrapper{
   display:none;
+}
+
+#quotes em,p{
+  color:rgba(245, 245, 245, 0.75)
+}
+
+#quotes em:hover
+, p:hover{
+  color:whitesmoke
 }

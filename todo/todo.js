@@ -1,11 +1,10 @@
 const show = document.querySelector('#show');
-
 const askName = document.querySelector('.ask-name');
 const nameForm = document.querySelector('.name-form');
 const nameInput = document.querySelector('.name-input');
 const time = document.querySelector('#time');
-const todayInput = document.querySelector('.todayForm input');
-const todayForm = document.querySelector('.todayForm')
+let todayInput = document.querySelector('.todayForm input');
+let todayForm = document.querySelector('.todayForm')
 const today = document.querySelector('.today');
 const good = document.querySelector('#good');
 const todoBtn = document.querySelector('#todo-btn');
@@ -14,6 +13,8 @@ const lists = document.querySelector('.lists')
 const doLists = document.querySelector('.doLists')
 const newTodo = document.querySelector('.newTodo')
 const todoInput = document.querySelector('.newTodo input')
+
+
 let nameStorage = '';
 let todayFocus = localStorage.getItem('todayFocus');
 let myName = '';
@@ -22,10 +23,10 @@ let doTemp = '';
 
 const timer = () => {
   const now = new Date();
-  const hour = String(now.getHours() > 12 ? now.getHours() -12 : now.getHours()).padStart(2, '0');
+  const hour = String(now.getHours() > 12 ? now.getHours() - 12 : now.getHours()).padStart(2, '0');
   const minute = String(now.getMinutes()).padStart(2, '0');
   const second = String(now.getSeconds()).padStart(2, '0');
-  
+
   time.innerHTML = `${hour}:${minute}:${second}`;
   setTimeout(timer, 1000)
 }
@@ -58,16 +59,26 @@ const inputToday = (e) => {
 
 todayFocus = localStorage.getItem('todayFocus')
 
-const submitFocus = (e) => {
+//여기
+function submitFocus(e) {
   e.preventDefault();
-  today.innerHTML = `<p id = 'script-today'>TODAY</p> <input class = 'focus-checkbox'type = 'checkbox'>${todayFocus}`
+  todoConfirm();
 }
 
-if (new Date().getHours() <=12) {
+function deleteToday(e) {
+  today.innerHTML = 'What is your main focus for today? <form class="todayForm"><input></input></form>'
+  localStorage.removeItem('todayFocus')
+  let todayInput = document.querySelector('.todayForm input');
+  let todayForm = document.querySelector('.todayForm')
+  todayInput.addEventListener('input', inputToday);
+  todayForm.addEventListener('submit', submitFocus);
+}
+
+if (new Date().getHours() <= 12) {
   good.innerText = `Good Morning, `
-}else if(new Date().getHours() <= 18){
+} else if (new Date().getHours() <= 18) {
   good.innerText = `Good Morning, `
-}else if (new Date().getHours() <= 4){
+} else if (new Date().getHours() <= 4) {
   good.innerText = `Good Morning, `
 }
 
@@ -77,8 +88,15 @@ if (userName) {
   good.innerHTML += localStorage.getItem('myName');
 }
 
-if(todayFocus) {
-  today.innerHTML = `<p id = 'script-today'>TODAY</p> <input class = 'focus-checkbox'type = 'checkbox'>${todayFocus}`
+function todoConfirm() {
+  today.innerHTML = `<p id = 'script-today'>TODAY</p> <input class = 'focus-checkbox'type = 'checkbox' >${todayFocus}
+  <button type="button" class="btn btn-outline-light btn-sm"></button>`
+  const deleteBtn = document.querySelector('.btn-outline-light');
+  deleteBtn.addEventListener('click', deleteToday);
+}
+//여기
+if (todayFocus) {
+  todoConfirm();
 }
 
 
@@ -97,6 +115,9 @@ const submitTodo = (e) => {
   todoInput.value = '';
 }
 
+const handleHover = () => {
+
+}
 
 askName.addEventListener('submit', handdleNameSubmit);
 nameInput.addEventListener('input', handleNameInput);
@@ -106,5 +127,5 @@ todoBtn.addEventListener('click', clickTodo);
 lists.addEventListener('click', (e) => {
   e.stopPropagation()
 })
-newTodo.addEventListener('submit', submitTodo)
-todoInput.addEventListener('input', inputTodo)
+newTodo.addEventListener('submit', submitTodo);
+todoInput.addEventListener('input', inputTodo);
