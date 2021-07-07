@@ -273,7 +273,14 @@ p{
 }
 
 .todo-lists btn{
-  vertical-align: text-bottom;
+  position: absolute;
+  left:95%;
+  top:6px
+}
+
+.todo-lists li{
+  position: relative;
+  
 }
 
 .todo-list-form input:focus{
