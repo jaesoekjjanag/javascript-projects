@@ -1,5 +1,6 @@
 *{
   color: whitesmoke;
+  user-select: none;
 }
 
 body{
@@ -12,6 +13,33 @@ body{
 
 #background{
   height:100%;
+}
+.ask-name{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height:100%;
+}
+
+.ask-name p{
+  font-size: 4rem;
+  letter-spacing: 0.1px;
+}
+
+.ask-name input{
+  width: 46rem;
+  height: 3.5rem;
+  background-color: transparent;
+  border:none;
+  border-bottom: 1.6px solid whitesmoke;
+  color: whitesmoke;
+  font-size: 3rem;
+  text-align: center;
+}
+
+.ask-name input:focus{
+  outline: none;
 }
 
 .name-input{
@@ -50,7 +78,24 @@ ul{
   position:relative;
   top:1px;
   margin-right:1rem;
+  border-radius: 50%;
+  background-color: whitesmoke;
+  opacity: 0;
 }
+
+.btn-outline-light{
+  opacity: 0;
+}
+
+#todayForm:hover > input{
+  opacity: 1;
+}
+
+#todayForm:hover > button{
+  opacity: 1;
+}
+
+
 
 .checkbox-label{
   cursor:pointer;
@@ -61,14 +106,19 @@ ul{
   vertical-align: middle;
 }
 
+
+
 .sub-contents{
   position: absolute;
   display: flex;
   justify-content: space-between;
-  bottom: 20px;
+  bottom: 10px;
   width:100%;
 }
 
+.sub-contents > *{
+  margin: 0 1rem;
+}
 .inputForm{
   display: inline-block;
 }
@@ -76,6 +126,7 @@ ul{
 #time{
   font-size: 7rem;
   font-weight: 1000;
+  transform: translate(0,25px);
 }
 
 #good{
@@ -88,7 +139,7 @@ ul{
   font-size: 2rem;
 }
 
-.
+
 p{
   margin:1rem;
 }
@@ -120,11 +171,11 @@ p{
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
-  margin-left: 1rem;
 }
 
 #settings i{
   color: rgba(245, 245, 245, 0.75);
+  vertical-align: top;
 }
 
 #settings i:hover{
@@ -157,11 +208,99 @@ p{
   display:none;
 }
 
-#quotes em,p{
-  color:rgba(245, 245, 245, 0.75)
+#quotes p,i{
+  color:rgba(245, 245, 245, 0.75);
+  cursor: pointer;
+  user-select: text;
 }
 
-#quotes em:hover
-, p:hover{
+#quotes p:hover i{
   color:whitesmoke
+}
+
+#quotes p:hover{
+  color:whitesmoke
+}
+
+#em{
+  color:interit;
+}
+
+#todo-btn{
+  position:relative;
+}
+
+.pop{
+  display: none;
+}
+
+
+#todo-wrapper{
+  position:relative;
+}
+#todo-wrapper .text{
+  cursor:pointer;
+  font-size: 1.15rem;
+  color: rgba(245, 245, 245, 0.75);
+}
+
+#todo-wrapper .text:hover{
+  color: whitesmoke
+}
+
+
+.todo-lists-square{
+  height: 20rem;
+  width: 18em;
+  position: absolute;
+  bottom:100%;
+  right: 0;
+  background: rgb(0,0,0,0.7);
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+
+.todo-list-form input{
+  position: absolute;
+  bottom:1rem;
+  left:1rem;
+  width: 17rem;
+  background-color: transparent;
+  border:none;
+  color: rgba(245, 245, 245, 0.75);
+  overflow: hidden;
+}
+
+.todo-list-form input:focus{
+  outline:none;
+}
+
+#todo-wrapper ul{
+  height: 18rem;
+  display: flex;
+  justify-content:flex-end;
+  flex-direction:column;
+  margin: 0;
+  padding: 0.5rem 1.2rem;
+  z-index:-1;
+}
+
+#todo-wrapper li{
+  padding-bottom: 0.25rem;
+}
+
+.todo-lists btn{
+  color: black;
+  font-size: 10px;
+  float:right;
+  display: none;
+}
+
+.todo-lists input{
+  margin-right: 0.4rem;
+}
+
+.todo-lists li:hover btn{
+  display: block;
 }

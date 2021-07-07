@@ -27,12 +27,13 @@
 
 <body>
   <div id='background'>
-    <span class="ask-name">
-      What is your name?
+
+    <div class="ask-name">
+      <p>Hello, What's your name?</p>
       <form class='name-form'>
         <input class='name-input'>
       </form>
-    </span>
+    </div>
 
     <div class="hidden-wrapper">
       <div id="weather">
@@ -50,16 +51,17 @@
       </section>
 
       <section class='sub-contents'>
-        <button id='settings'><i class="fas fa-cogs"></i></button>
+        <button id='settings'><i class="fas fa-sign-out-alt"></i></button>
         <span id='quotes'>quotes</span>
         <span id=todo-wrapper>
-          <button id='todo-btn'>
-            <span class='todoLists lists'>
-              <ul class='doLists'>
-              </ul>
-              <form class='newTodo '><input placeholder="New Todo"></form>
-            </span>
-            Todo
+          <p class='text'>Todo</p>
+          <div class='todo-lists-square pop'>
+            <form class='todo-list-form'>
+              <input type="text" placeholder="New Todo">
+            </form>
+            <ul class='todo-lists'>
+            </ul>
+          </div>
         </span>
         </button>
       </section>

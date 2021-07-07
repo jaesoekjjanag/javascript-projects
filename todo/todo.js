@@ -8,22 +8,39 @@ let todayForm = document.querySelector('.todayForm')
 const today = document.querySelector('.today');
 const good = document.querySelector('#good');
 const todoBtn = document.querySelector('#todo-btn');
-const todoLists = document.querySelector('.todoLists')
-const lists = document.querySelector('.lists')
-const doLists = document.querySelector('.doLists')
-const newTodo = document.querySelector('.newTodo')
-const todoInput = document.querySelector('.newTodo input')
-
-
+const todoText = document.querySelector('.text');
+const todoSquare = document.querySelector('.todo-lists-square');
+const todoListForm = document.querySelector('.todo-list-form');
+const todoListInput = todoListForm.querySelector('input');
+const signOut = document.querySelector('.fa-sign-out-alt');
 let nameStorage = '';
 let todayFocus = localStorage.getItem('todayFocus');
 let myName = '';
 let doTemp = '';
+let listInput = '';
+let listInputItems = [];
+
+let parsedListItems = JSON.parse(localStorage.getItem('todoItems'));
+
+if (parsedListItems) {
+  listInputItems = parsedListItems;
+  for (i of listInputItems) {
+    let newList = document.createElement('li');
+    document.querySelector('.todo-lists').appendChild(newList);
+    let checkBtn = document.createElement('input');
+    checkBtn.setAttribute('type', 'checkbox');
+    let delBtn = document.createElement('btn');
+    delBtn.innerText = '✖';
+    delBtn.addEventListener('click', e => e.target.parentNode.remove())
+    newList.append(checkBtn, i, delBtn);
+  }
+}
 
 
 const timer = () => {
   const now = new Date();
-  const hour = String(now.getHours() > 12 ? now.getHours() - 12 : now.getHours()).padStart(2, '0');
+  const hour = String(now.getHours() > 12 ? now.getHours() - 12 : now.getHours());
+  //.padStart(2, '0')
   const minute = String(now.getMinutes()).padStart(2, '0');
   const second = String(now.getSeconds()).padStart(2, '0');
 
@@ -74,12 +91,14 @@ function deleteToday(e) {
   todayForm.addEventListener('submit', submitFocus);
 }
 
-if (new Date().getHours() <= 12) {
+if (new Date().getHours() <= 5) {
+  good.innerText = `Good Night, `
+} else if (new Date().getHours() <= 11) {
   good.innerText = `Good Morning, `
 } else if (new Date().getHours() <= 18) {
-  good.innerText = `Good Morning, `
-} else if (new Date().getHours() <= 4) {
-  good.innerText = `Good Morning, `
+  good.innerText = `Good Afternoon, `
+} else if (new Date().getHours() <= 24) {
+  good.innerText = `Good Evening, `
 }
 
 if (userName) {
@@ -88,9 +107,10 @@ if (userName) {
   good.innerHTML += localStorage.getItem('myName');
 }
 
+
 function todoConfirm() {
-  today.innerHTML = `<p id = 'script-today'>TODAY</p> <input class = 'focus-checkbox'type = 'checkbox' >${todayFocus}
-  <button type="button" class="btn btn-outline-light btn-sm"></button>`
+  today.innerHTML = `<p id = 'script-today'>TODAY</p> <form id = 'todayForm'><input class = 'focus-checkbox'type = 'checkbox' ><span class = 'focusText'>${todayFocus}</span>
+  <button type="button" class="btn btn-outline-light btn-sm"></button></form>`
   const deleteBtn = document.querySelector('.btn-outline-light');
   deleteBtn.addEventListener('click', deleteToday);
 }
@@ -109,23 +129,43 @@ const inputTodo = (e) => {
   doTemp = e.target.value;
 }
 
-const submitTodo = (e) => {
+const listInputChange = (e) => {
+  listInput = e.target.value;
+}
+
+const handleListFormSubmit = (e) => {
   e.preventDefault();
-  doLists.innerHTML += `<li><input type = 'checkbox'>${doTemp}</li>`
-  todoInput.value = '';
+  let newList = document.createElement('li');
+  document.querySelector('.todo-lists').appendChild(newList);
+  let checkBtn = document.createElement('input');
+  checkBtn.setAttribute('type', 'checkbox');
+  listInputItems.push(listInput);
+  localStorage.setItem('todoItems', JSON.stringify(listInputItems));
+  let delBtn = document.createElement('btn');
+  delBtn.innerText = '✖';
+  delBtn.addEventListener('click', e => e.target.parentNode.remove())
+  newList.append(checkBtn, listInput, delBtn);
+  todoListForm.querySelector('input').value = '';
+  listInput = '';
 }
 
-const handleHover = () => {
 
+const todoPopUp = () => {
+  todoSquare.classList.toggle('pop')
 }
+
+const signOutClick = () => {
+  localStorage.clear();
+  location.reload();
+}
+
+
 
 askName.addEventListener('submit', handdleNameSubmit);
 nameInput.addEventListener('input', handleNameInput);
 todayInput.addEventListener('input', inputToday);
 todayForm.addEventListener('submit', submitFocus);
-todoBtn.addEventListener('click', clickTodo);
-lists.addEventListener('click', (e) => {
-  e.stopPropagation()
-})
-newTodo.addEventListener('submit', submitTodo);
-todoInput.addEventListener('input', inputTodo);
+todoText.addEventListener('click', todoPopUp);
+todoListInput.addEventListener('change', listInputChange)
+todoListForm.addEventListener('submit', handleListFormSubmit);
+signOut.addEventListener('click', signOutClick)

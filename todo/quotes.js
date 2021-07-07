@@ -47,9 +47,9 @@ let randomQuote = quoteList[Math.floor(Math.random() * quoteList.length)]
 
 function changeQuote() {
   randomQuote = quoteList[Math.floor(Math.random() * quoteList.length)]
-  quotes.innerHTML = `<p><em>${randomQuote.text}</em>, ${randomQuote.author}</p>`
+  quotes.innerHTML = `<p> <i>${randomQuote.text}</i>, ${randomQuote.author}</p>`
 }
 
-quotes.innerHTML = `<p><em>${randomQuote.text}</em>, ${randomQuote.author}</p>`
+quotes.innerHTML = `<p> <i>${randomQuote.text}</i>, ${randomQuote.author}</p>`
 
 quotes.addEventListener('click', changeQuote)
